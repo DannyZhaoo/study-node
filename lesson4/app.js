@@ -23,6 +23,7 @@ superagent.get(cnodeUrl).end(function (err, res) {
     var ep = new eventproxy();
     
     // 计数 完成所有的事件，每次完成后获取后的回调函数
+    // 控制并发，但是这些并发还是太多了
     ep.after('topic_html', topicUrls.length, function (topics) {
         topics = topics.map(function (topicPair) {
             var topicUrl = topicPair[0];
